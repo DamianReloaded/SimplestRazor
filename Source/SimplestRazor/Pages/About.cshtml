@@ -1,0 +1,17 @@
+﻿@model SimplestRazor.Pages.Index
+@{
+    var PModel = Model.GetModule<SimplestRazor.Pages.About>();
+}
+@{Model.RenderHeader(Html);}
+
+    this is @Model.Module.Title
+
+<main role="main" class="pb-3">
+<form method="post">
+    @Html.AntiForgeryToken()
+    <input id="name" name="caca" type="text"/>
+    <input type="submit"/>
+</form>
+You said: @PModel.Caca
+
+@{Model.RenderFooter(Html);}
