@@ -30,9 +30,6 @@ namespace Reload.Razor.Helpers
 
                     .mainGridDiv
                     {   
-                        border:1px;
-                        border-style:line;
-border-color:grey;
                         background: #FFFFFF!important;
                         max-width:" + parameters.Width + @"; margin: 0 auto;
                     }
