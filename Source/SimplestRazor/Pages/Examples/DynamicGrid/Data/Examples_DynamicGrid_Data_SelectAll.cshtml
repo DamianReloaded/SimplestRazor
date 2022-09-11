@@ -1,0 +1,6 @@
+﻿@model SimplestRazor.Pages.Index
+@{
+    var PModel = Model.GetModule<SimplestRazor.Pages.Examples.DynamicGrid.Data.Examples_DynamicGrid_Data_SelectAll>();
+}
+@PModel.Output()
+

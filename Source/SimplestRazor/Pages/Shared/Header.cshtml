@@ -1,5 +1,166 @@
 ﻿@model SimplestRazor.Pages.Index
 @{ViewContext.Writer.Write(@"<!DOCTYPE html><html lang=""en""><head><title>");}
+
 @ViewData["Title"]
-@{ViewContext.Writer.Write(@"</title></head><body>");}
-    Header<hr />
+@{ViewContext.Writer.Write(@"</title>");}
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/mvc-grid/mvc-grid.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/menubar.css" asp-append-version="true" />
+        <link rel="stylesheet" type="text/css" href="~/css/DataTables/dataTables.bootstrap5.min.css"/>
+        <link rel="stylesheet" type="text/css" href="~/css/FixedHeader/fixedHeader.bootstrap5.min.css"/>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/menubar.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/js/DataTables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="~/js/FixedHeader/fixedHeader.bootstrap5.js"></script>
+        <script type="text/javascript" src="~/js/DataTables/dataTables.bootstrap5.min.js"></script>
+@{ViewContext.Writer.Write(@"</head><body><main role=""main"" class=""pb-3"">");}
+    Header
+    
+    @Html.Menu()
+    <hr />
+
+    <a href="/?r=About">About</a> | 
+    <a href="/?r=Examples_DynamicGrid_Index">Example: Dynamic Grid</a> | 
+    <a href="/?r=Examples_DynamicGrid_Data_SelectAll">Dynamic Grid Data</a> 
+
+    <script>
+        /*
+        var div0 = document.createElement('div');
+        div0.className = 'mvc-grid mvc-grid-header-mode';
+
+        var div1 = document.createElement('div');
+        div1.className = 'mvc-grid-table';
+        div0.appendChild(div1);
+
+        var table = document.createElement('table');
+        div1.appendChild(table);
+        table.border = 1;
+
+        var thead = document.createElement('thead');
+        table.appendChild(thead);
+
+        var tr = document.createElement('tr');   
+        thead.appendChild(tr);
+
+        var th1 = document.createElement('th');
+        tr.appendChild(th1);
+        th1.innerHTML = 'col1';
+
+        var th2 = document.createElement('th');
+        tr.appendChild(th2);
+        th2.innerHTML = 'col2';
+
+        var tbody = document.createElement('tbody');
+        table.appendChild(tbody);
+
+        for (var i = 1; i < 4; i++)
+        {
+            var tr = document.createElement('tr');   
+
+            var td1 = document.createElement('td');
+            var td2 = document.createElement('td');
+
+            var text1 = document.createTextNode('Text1');
+            var text2 = document.createTextNode('Text2');
+
+            td1.appendChild(text1);
+            td2.appendChild(text2);
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+
+            tbody.appendChild(tr);
+        }
+        document.body.appendChild(div0);
+        */
+
+       /*
+       
+<div class="mvc-grid mvc-grid-header-mode" data-name="" data-id="0">
+    <div class="mvc-grid-table">
+        <table>
+            <thead>
+                <tr class="mvc-grid-headers mvc-grid-row-filters">
+                    <th>
+                        <span class="mvc-grid-title"></span>
+                    </th>
+                    <th>
+                        <span class="mvc-grid-title"></span>
+                    </th>
+                    <th>
+                        <span class="mvc-grid-title">Id</span>
+                    </th>
+                    <th class="filterable">
+                        <div>
+                            <input class="mvc-grid-value" value="" size="11" placeholder="RazonSocial">
+                        </div>
+                        
+                        <button type="button" class="mvc-grid-filter"></button>
+                    </th>
+                    <th class="filterable">
+                        <div>
+                            <input class="mvc-grid-value" value="" size="11" placeholder="Abreviatura">
+                        </div>
+                        
+                        <button type="button" class="mvc-grid-filter"></button>
+                    </th>
+                    <th class="filterable">
+                        <div>
+                            <input class="mvc-grid-value" value="" size="4" placeholder="CUIT">
+                        </div>
+                        
+                        <button type="button" class="mvc-grid-filter"></button>
+                    </th>
+                    <th class="filterable">
+                        <div>
+                            <input class="mvc-grid-value" value="" size="9" placeholder="Direccion">
+                        </div>
+                        
+                        <button type="button" class="mvc-grid-filter"></button>
+                    </th>
+                    <th>
+                        <span class="mvc-grid-title">Activo</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input id="UsuarioId_1" name="UsuarioId_1" type="checkbox" value="true"><input name="UsuarioId_1" type="hidden" value="false"></td>
+                    <td><button data-id="1" onclick="showModal(1,'Test1','Test','0','CABA','True')">Editar</button></td>
+                    <td>1</td>
+                    <td><span style="color:#8888FF">Test1</span></td>
+                    <td><span style="color:#8888FF">Test</span></td>
+                    <td><span style="color:#8888FF">0</span></td>
+                    <td><span style="color:#8888FF">CABA</span></td>
+                    <td>Si</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mvc-grid-pager">
+        <button type="button" disabled="">«</button>
+        <button type="button" disabled="">‹</button>
+        <button type="button" class="active" data-page="1">1</button>
+        <button type="button" disabled="">›</button>
+        <button type="button" disabled="">»</button>
+        <div class="mvc-grid-page-sizes">
+            <select class="mvc-grid-pager-rows">
+                <option value="0">All</option>
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="10">10</option>
+                <option value="20" selected="">20</option>
+                <option value="50">50</option>
+            </select>
+        </div>
+    </div>
+
+</div>
+       
+       */
+
+    </script>
+

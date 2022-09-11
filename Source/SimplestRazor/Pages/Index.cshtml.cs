@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Reload.Razor;
+using SimplestRazor.Pages.Examples.DynamicGrid;
+using SimplestRazor.Pages.Examples.DynamicGrid.Data;
+
 namespace SimplestRazor.Pages
 {
     [ValidateAntiForgeryToken]
@@ -10,14 +13,32 @@ namespace SimplestRazor.Pages
         {
             if (!User.Identity.IsAuthenticated) Response.Redirect("/Error");
 
-            PagePath = Request.Query["page"].ToString() ?? "index";
-            if (PagePath.ToLower() == nameof(About).ToLower())
+            PagePath = Request.Query["r"].ToString() ?? "index";
+            switch (PagePath.ToLower())
             {
-                Module = CreateModule<About>();
-            }
-            else
-            {
-                Module = CreateModule<Users>();
+                case "about": // nameof(About).ToLower()
+                    {
+                        Module = CreateModule<About>();
+                    } break;
+
+                case "examples_dynamicgrid_index":                
+                    {
+                        Module = CreateModule<Examples_DynamicGrid_Index>();                
+                    }
+                    break;
+
+                case "examples_dynamicgrid_data_selectall":
+                    {
+                        Module = CreateModule<Examples_DynamicGrid_Data_SelectAll>();
+                    }
+                    break;
+
+                default:
+                    {
+                        Module = CreateModule<Error>();
+                    }
+                    break;
+
             }
             return Module;
         }

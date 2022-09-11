@@ -1,27 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Diagnostics;
+using Reload.Razor;
 
 namespace SimplestRazor.Pages
 {
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     [IgnoreAntiforgeryToken]
-    public class ErrorModel : PageModel
+    public class Error : Module
     {
-        public string? RequestId { get; set; }
-
-        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
-
-        private readonly ILogger<ErrorModel> _logger;
-
-        public ErrorModel(ILogger<ErrorModel> logger)
+        public override PartialViewResult OnGet()
         {
-            _logger = logger;
+            return View(this);
         }
-
-        public void OnGet()
+        public override PartialViewResult OnPost()
         {
-            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+            return View(this);
         }
     }
 }

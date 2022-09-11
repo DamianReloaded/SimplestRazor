@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Negotiate;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Server.IISIntegration;
 using System.Runtime.InteropServices;
 
@@ -17,15 +18,23 @@ builder.Services.AddAuthorization(options =>
 
 
 // Add services to the container.
-builder.Services.AddRazorPages().AddRazorPagesOptions(options =>
+var razorPagesOptions = builder.Services.AddRazorPages().AddRazorPagesOptions(options =>
 {
+    // Add Controllers
     if (1 == 1) options.Conventions.AddPageRoute("/Values", "Values/4");
+});
+
+// Add additional folders for views
+razorPagesOptions.AddRazorOptions(o =>
+{
+    o.PageViewLocationFormats.Add("/Pages/Users/{0}.cshtml");
+    o.PageViewLocationFormats.Add("/Pages/Examples/DynamicGrid/Data/{0}.cshtml");
+    o.PageViewLocationFormats.Add("/Pages/Examples/DynamicGrid/{0}.cshtml");
 });
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment()) // Configure the HTTP request pipeline.
 {
     app.UseExceptionHandler("/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
