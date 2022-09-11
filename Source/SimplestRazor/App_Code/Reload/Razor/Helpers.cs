@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Reload.Razor.Helpers
 {
-    public static class HtmlHelpers
+    public static partial class HtmlHelpers
     {
         public static IHtmlContent Menu(this IHtmlHelper htmlHelper)
         {

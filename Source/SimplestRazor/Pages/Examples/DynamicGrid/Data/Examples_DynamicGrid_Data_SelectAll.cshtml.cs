@@ -25,6 +25,8 @@ namespace SimplestRazor.Pages.Examples.DynamicGrid.Data
             dt.Rows.Add(3, "Andrea Ely", "Bsc Bio-Chemistry", "Queensland");
             dt.Rows.Add(4, "Leslie Mac", "MSC", "Town-ville");
             dt.Rows.Add(5, "Vaibhav Adhyapak", "MBA", "New Delhi");
+            dt.Rows.Add(6, "Rabit Roger", "AFD", "Cartoon");
+
             return dt;
         }
 

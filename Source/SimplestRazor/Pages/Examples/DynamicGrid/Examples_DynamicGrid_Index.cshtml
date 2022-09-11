@@ -1,141 +1,26 @@
 ﻿@model SimplestRazor.Pages.Index
 @{
     var Module = Model.GetModule<SimplestRazor.Pages.Examples.DynamicGrid.Examples_DynamicGrid_Index>();
+
+    var GridParams = new Reload.Razor.Helpers.DrawGridParameters()
+    {
+        FormAction = "/?r=Examples_DynamicGrid_Data_SelectAll",
+        Width="90%",//Width = "1000px",
+        ColumnSearchWidths = "['1px','40px']"
+    };
 }
 
 @{Html.RenderPartial("Header");}
 
-this is @Model.Module.Title
-
-
 <main role="main" class="pb-3">
 <form method="post" id="form">
     @Html.AntiForgeryToken()    
-    <input id="name" name="name" type="text"/>
-    <input type="submit"/>
-
+    @Html.DrawGridPlaceHolder(GridParams);
 </form>
 </main>
-You said: @Module.Name
-
-<style>
-.dtHorizontalVerticalExampleWrapper {
-  max-width: 600px;
-  margin: 0 auto;
-}
-#dtHorizontalVerticalExample th, td {
-  white-space: nowrap;
-}
-table.dataTable thead .sorting:after,
-table.dataTable thead .sorting:before,
-table.dataTable thead .sorting_asc:after,
-table.dataTable thead .sorting_asc:before,
-table.dataTable thead .sorting_asc_disabled:after,
-table.dataTable thead .sorting_asc_disabled:before,
-table.dataTable thead .sorting_desc:after,
-table.dataTable thead .sorting_desc:before,
-table.dataTable thead .sorting_desc_disabled:after,
-table.dataTable thead .sorting_desc_disabled:before {
-  bottom: .5em;
-}
-
-</style>
-
-<button>Send an HTTP POST request to a page and get the result back</button>
-<div id="mainGrid">
-    </div>
 
 
-<script>
-
-var index = 0;
-
-function populateTable(data) { 
-    
-    index++;
-
-    var mainGrid = document.getElementById('mainGrid')
-    if (mainGrid) {
-        mainGrid.innerHTML = '';
-    }
-
-    var table = document.createElement('table');
-    table.id = 'dtHorizontalExample';
-    table.className = 'table table-striped table-bordered table-sm';
-    table.width = '100%';
-    table.cellSpacing = '0';
-    mainGrid.appendChild(table);
-    table.border = 1;
-
-    var thead = document.createElement('thead');
-    table.appendChild(thead);
-
-    if (data.length > 0) {
-        var tr = document.createElement('tr');
-        thead.appendChild(tr);
-
-        var obj = data[0];
-        for (var key in obj) {
-            var td1 = document.createElement('td');
-            var text1 = document.createTextNode(key + index);
-            var th1 = document.createElement('th');
-            tr.appendChild(th1);
-            th1.appendChild(text1);
-        }
-
-        var tbody = document.createElement('tbody');
-        table.appendChild(tbody);
-
-        for (var i = 0; i < data.length; i++) {
-            var tr = document.createElement('tr');
-            var obj = data[i];
-            for (var key in obj) {
-                var value = obj[key];
-
-                var td1 = document.createElement('td');
-
-                var text1 = document.createTextNode(value);
-
-                td1.appendChild(text1);
-                tr.appendChild(td1);
-
-            }
-            tbody.appendChild(tr);
-        }
-    }
-
-    $('#dtHorizontalExample').DataTable({
-        fixedHeader:true,
-        "scrollX": true,
-        "scrollY": 100,
-        scrollCollapse:true,
-        lengthMenu: [2, 5, 10, 25, 50, -1],
-        columnDefs:[
-    {
-        target:0,
-        visible:true,
-        width:20
-    }]
-  });
-  $('.dataTables_length').addClass('bs-select');
-
-}
-
-$("button").click(function(){
-    var token = $('input[name="__RequestVerificationToken"]', form).val();
-  $.post("/?r=Examples_DynamicGrid_Data_SelectAll",
-  {
-    __RequestVerificationToken: token, 
-    name: "Donald Duck",
-    city: "Duckburg"
-  },
-  function(data, status){
-    //alert("Data: " + data + "\nStatus: " + status);
-      populateTable(JSON.parse(data));
-  });
-    return false;
-});
-</script>
+@Html.DrawGrid(GridParams);
 
 
 

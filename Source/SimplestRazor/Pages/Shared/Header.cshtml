@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="~/css/menubar.css" asp-append-version="true" />
         <link rel="stylesheet" type="text/css" href="~/css/DataTables/dataTables.bootstrap5.min.css"/>
         <link rel="stylesheet" type="text/css" href="~/css/FixedHeader/fixedHeader.bootstrap5.min.css"/>
+        <link rel="stylesheet" type="text/css" href="~/images/bootstrap-icons/bootstrap-icons.css"/>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
@@ -16,16 +17,15 @@
         <script type="text/javascript" src="~/js/DataTables/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="~/js/FixedHeader/fixedHeader.bootstrap5.js"></script>
         <script type="text/javascript" src="~/js/DataTables/dataTables.bootstrap5.min.js"></script>
+
 @{ViewContext.Writer.Write(@"</head><body><main role=""main"" class=""pb-3"">");}
     Header
     
     @Html.Menu()
-    <hr />
-
     <a href="/?r=About">About</a> | 
     <a href="/?r=Examples_DynamicGrid_Index">Example: Dynamic Grid</a> | 
     <a href="/?r=Examples_DynamicGrid_Data_SelectAll">Dynamic Grid Data</a> 
-
+    <hr />
     <script>
         /*
         var div0 = document.createElement('div');
