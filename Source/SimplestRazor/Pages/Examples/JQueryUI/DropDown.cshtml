@@ -1,0 +1,38 @@
+﻿@model SimplestRazor.Pages.Index
+@{
+    var Module = Model.GetModule<SimplestRazor.Pages.Examples.Bootstrap.DropDown>();
+}
+
+@{Html.RenderPartial("Header");}
+
+<main role="main" class="pb-3">
+<form method="post" id="form">
+    @Html.AntiForgeryToken()
+
+        <div class="btn-group" style="width:1000px;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                Default dropdown
+            </button>
+
+            <ul id="demolist" class="dropdown-menu " aria-labelledby="defaultDropdown" style="width: 100%;">
+                <li class="dropdown-header ">
+                    <div class="container"><div class="row"><div class="col">item1</div><div class="col order-5">item2</div><div class="col order-1">Item3</div></div></div>
+                </li>
+                <li class="dropdown-item ">
+                    <div class="container"><div class="row"><div class="col">item1</div><div class="col order-5">item2</div><div class="col order-1">Item3</div></div></div>
+                </li>
+            </ul>
+        </div>
+
+        <script>
+            "use strict"
+            $('#demolist li').on('click', function () {
+                alert($(this).text());
+            });
+        </script>
+
+    </form>
+</main>
+
+
+@{Html.RenderPartial("Footer");}

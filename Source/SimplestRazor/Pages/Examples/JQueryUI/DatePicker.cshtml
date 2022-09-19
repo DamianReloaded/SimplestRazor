@@ -1,0 +1,65 @@
+﻿@model SimplestRazor.Pages.Index
+@{
+    var Module = Model.GetModule<SimplestRazor.Pages.Examples.Bootstrap.DatePicker>();
+}
+
+@{Html.RenderPartial("Header");}
+
+<main role="main" class="pb-3">
+<form method="post" id="form">
+    @Html.AntiForgeryToken()
+
+        <script>
+            $.datepicker.regional['es'] = {
+                closeText: 'Cerrar',
+                prevText: '< Ant',
+                nextText: 'Sig >',
+                currentText: 'Hoy',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+                dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+                weekHeader: 'Sm',
+                dateFormat: 'dd/mm/yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+            $.datepicker.setDefaults($.datepicker.regional['es']);
+            $(function () {
+                $("#fecha").datepicker();
+            });
+        </script>
+        <button id="testDatePicker" onclick="(function(){ alert( $('#datepicker').datepicker('getDate') );})();">
+            test datepicker
+        </button>
+        <!-- Datepicker -->
+        <h2 class="demoHeaders">Datepicker</h2>
+        <input type="text" id="datepicker"></input>
+        <script>
+            "use strict"
+            $("#datepicker").datepicker({
+                inline: true,
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1900:2100"
+            });
+
+            $(function () {
+                $("#datepicker").datepicker($.datepicker.regional["fr"]);
+                $("#locale").on("change", function () {
+                    $("#datepicker").datepicker("option",
+                        $.datepicker.regional[$(this).val()]);
+                });
+            });
+
+        </script>
+
+
+    </form>
+</main>
+
+
+@{Html.RenderPartial("Footer");}

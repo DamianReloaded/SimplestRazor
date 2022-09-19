@@ -1,0 +1,19 @@
+﻿@model SimplestRazor.Pages.Index
+@{
+    var Module = Model.GetModule<SimplestRazor.Pages.Examples.Bootstrap.Selector>();
+}
+
+@{Html.RenderPartial("Header");}
+
+<main role="main" class="pb-3">
+<form method="post" id="form">
+    @Html.AntiForgeryToken()    
+    
+
+
+
+</form>
+</main>
+
+
+@{Html.RenderPartial("Footer");}

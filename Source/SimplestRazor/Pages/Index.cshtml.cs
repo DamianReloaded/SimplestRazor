@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Reload.Razor;
 using SimplestRazor.Pages.Examples.DynamicGrid;
 using SimplestRazor.Pages.Examples.DynamicGrid.Data;
+using SimplestRazor.Pages.Examples.Bootstrap;
 
 namespace SimplestRazor.Pages
 {
@@ -13,7 +14,7 @@ namespace SimplestRazor.Pages
         {
             if (!User.Identity.IsAuthenticated) Response.Redirect("/Error");
 
-            PagePath = Request.Query["r"].ToString() ?? "index";
+            PagePath = Request.Query["r"].ToString().ToLower() ?? "index";
             switch (PagePath.ToLower())
             {
                 case "about": // nameof(About).ToLower()
@@ -30,6 +31,30 @@ namespace SimplestRazor.Pages
                 case "examples_dynamicgrid_data_selectall":
                     {
                         Module = CreateModule<Examples_DynamicGrid_Data_SelectAll>();
+                    }
+                    break;
+
+                case "accordion":
+                    {
+                        Module = CreateModule<Accordion>();
+                    }
+                    break;
+
+                case "selector":
+                    {
+                        Module = CreateModule<Selector>();
+                    }
+                    break;
+
+                case "datepicker":
+                    {
+                        Module = CreateModule<DatePicker>();
+                    }
+                    break;
+
+                case "dropdown":
+                    {
+                        Module = CreateModule<DropDown>();
                     }
                     break;
 

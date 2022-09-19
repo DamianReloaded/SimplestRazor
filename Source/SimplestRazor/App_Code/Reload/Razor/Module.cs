@@ -22,7 +22,7 @@ namespace Reload.Razor
             return pvr;
         }
 
-        public virtual PartialViewResult OnGet() { return View(""); }
-        public virtual PartialViewResult OnPost() { return View(""); }
+        public virtual IActionResult OnGet() { return View(""); }
+        public virtual IActionResult OnPost() { return View(""); }
     }
 }

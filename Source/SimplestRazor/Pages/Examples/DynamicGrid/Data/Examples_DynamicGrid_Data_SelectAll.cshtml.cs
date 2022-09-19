@@ -42,11 +42,11 @@ namespace SimplestRazor.Pages.Examples.DynamicGrid.Data
             return DataTableToJSONWithJSONNet(getData());
         }
 
-        public override PartialViewResult OnGet()
+        public override IActionResult OnGet()
         {
             return View(this);
         }
-        public override PartialViewResult OnPost()
+        public override IActionResult OnPost()
         {
 
             return View(this);

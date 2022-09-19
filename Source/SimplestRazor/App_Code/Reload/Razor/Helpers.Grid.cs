@@ -5,6 +5,8 @@ namespace Reload.Razor.Helpers
 {
     public class DrawGridParameters
     {
+        public string DivId { get; set; } = "GridDiv" + System.Guid.NewGuid();
+        public string TableId { get; set; } = "GridTable" + System.Guid.NewGuid();
         public string FormAction { get; set; } = "";
         public string TableWidth { get; set; } = "100%";
         public string Width { get; set; } = "100%";
@@ -17,7 +19,7 @@ namespace Reload.Razor.Helpers
     {
         public static IHtmlContent DrawGridPlaceHolder(this IHtmlHelper htmlHelper, DrawGridParameters parameters)
         {
-            return new HtmlString(@"<div id=""mainGridDiv"" class=""mainGridDiv""/>");
+            return new HtmlString(@"<div id=""" + parameters.DivId + @""" class=""mainGridDiv""/>");
         }
         public static IHtmlContent DrawGrid(this IHtmlHelper htmlHelper, DrawGridParameters parameters)
         {
@@ -73,13 +75,13 @@ namespace Reload.Razor.Helpers
                 <script>
                     function populateTable(data) { 
     
-                        var mainGridDiv = document.getElementById('mainGridDiv')
+                        var mainGridDiv = document.getElementById('" + parameters.DivId + @"')
                         if (mainGridDiv) {
                             mainGridDiv.innerHTML = '';
                         }
 
                         var table = document.createElement('table');
-                        table.id = 'mainGridTable';
+                        table.id = '" + parameters.TableId + @"';
                         table.className = 'table table-striped table-bordered table-sm';
                         table.width = '" + parameters.TableWidth + @"';
                         mainGridDiv.appendChild(table);
@@ -163,7 +165,7 @@ namespace Reload.Razor.Helpers
 
                         {
                             var idx=0;
-                            $('#mainGridTable tfoot th').each(function () {
+                            $('#" + parameters.TableId + @" tfoot th').each(function () {
                                 if (idx>0) {
                                     var title = $(this).text();
                                     $(this).html('<input type=""text"" placeholder="""" style=""border:0;width:100%;"" />');
@@ -175,7 +177,7 @@ namespace Reload.Razor.Helpers
                         if (" + parameters.ColumnSearchWidths+ @".length > 0)
                         {
                             var widths = "+ parameters.ColumnSearchWidths + @";
-                            var ths = $('#mainGridTable tfoot th');
+                            var ths = $('#" + parameters.TableId + @" tfoot th');
                             for (var i=0; i<" + parameters.ColumnSearchWidths + @".length; i++)
                             {
                                 var title = $(ths[i]).innerText;
@@ -183,7 +185,7 @@ namespace Reload.Razor.Helpers
                             }
                         }
 
-                        $('#mainGridTable').DataTable({
+                        $('#" + parameters.TableId + @"').DataTable({
                             dom: '<""toolbar"">frtip',
                             fixedHeader:true,
                             ""scrollX"": true,
