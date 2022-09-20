@@ -46,6 +46,12 @@ namespace SimplestRazor.Pages
                     }
                     break;
 
+                case "selector2":
+                    {
+                        Module = CreateModule<Selector2>();
+                    }
+                    break;
+
                 case "datepicker":
                     {
                         Module = CreateModule<DatePicker>();

@@ -3,149 +3,19 @@
     var Module = Model.GetModule<SimplestRazor.Pages.Examples.Bootstrap.Selector>();
 }
 
-@{Html.RenderPartial("Header");}
+@{ await Html.RenderPartialAsync("Header");}
 
-        <div class="modal fade" id="TipoDocumentoModal" tabindex="-1" role="dialog" aria-labelledby="TipoDocumentoModalLabel" aria-hidden="true">
-	        <div class="modal-dialog" role="document">
-		        <div class="modal-content">
-	                <div class="modal-header">
-		                <h4 class="modal-title">Seleccionar</h4>
-	                </div>
-                    <div style="margin:10px;">
-                        <input type="text" id="txtSelector" style="width:100%"/>
-        
-                        <ol id='olSelectable' style="width:100%; height:200px;  overflow-y: scroll;">
-                        </ol>
-                        <!-- 
-                        -->
-                        <div id="disp"></div>
-                        <div class="modal-footer">
-				            <button type="button" class="btn btn-secondary" onclick="cancelSelectorModal()">Cancelar</button>
-				            <button type="submit" class="btn btn-success" onclick="acceptSelectorModal()">Seleccionar</button>
-			            </div>
-                    </div>
-		        </div>
-	        </div>
-        </div>
-
-        <style>
-            body {
-                font-family: Arial, Helvetica, sans-serif;
-            }
-
-            table {
-                font-size: 1em;
-            }
-
-            .ui-draggable, .ui-droppable {
-                background-position: top;
-            }
-
-            #feedback {
-                font-size: 1.4em;
-            }
-
-            #olSelectable .ui-selecting {
-                background: #FECA40;
-            }
-
-            #olSelectable .ui-selected {
-                background: #F39814;
-                color: white;
-            }
-
-            #olSelectable {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-                width: 60%;
-            }
-
-            #olSelectable li {
-                margin: 1px;
-                padding: 1px;
-                height: 20px;
-            }
-        </style>
-
-        <script>
-            $(function () {
-                $("#olSelectable").selectable({
-                    stop: function () {
-                        var result = $("#select-result").empty();
-                        $(".ui-selected", this).each(function () {
-                            var index = $("#olSelectable li").index(this);
-                            result.append(" #" + (index + 1));
-                            SelectedLI = $(this);
-                        });
-                    }
-                });
-            });
-
-        </script>
-
-        <script type="text/javascript">
-            jQuery(document).ready(function () {
-                jQuery("#olSelectable").selectable({
-                    selected: function (event, ui) {
-                        $(ui.selected).addClass('ui-selected').siblings().removeClass('ui-selected');
-                    },
-                });
-            });
-        </script>
-
-        <script>
-            function showDiv(p1) {
-                var tmp = $('#txtSelector').val();
-                var chr = String.fromCharCode(p1.charCode);
-                $('#olSelectable').html("<li class='ui-widget-content' data-id='1' data-text='Item 1'>Item 1</li><li class='ui-widget-content' data-id='2' data-text='Item 2'>Item 2</li>");
-            }
-            $('#txtSelector').on('keyup', showDiv);
-        </script>
-
-<script>
-    var SelectorControlId;
-    var SelectorControlText;
-    var SelectedLI;
-	function showModal(id, controlId, controlText) {
-        SelectorControlId = controlId;
-        SelectorControlText = controlText;
-		$('#TipoDocumentoModal').modal('show');
-	}
-
-	function hideModal() {
-		$('#TipoDocumentoModal').modal('hide');
-	}
-
-    function cancelSelectorModal()
-    {
-		hideModal();
-    }
-
-    function acceptSelectorModal()
-    {
-        if (SelectedLI!=null)
-        {
-            SelectorControlId.val(SelectedLI.attr('data-id'));
-            SelectorControlText.val(SelectedLI.attr('data-id') + ' - ' + SelectedLI.attr('data-text'));
-		    hideModal();
-        }
-    }
-</script>
-
-<input type="hidden" id="SelectorId"/>
-<input type="text" id="SelectorTextbox" onclick="showModal(0,$('#SelectorId'),$('#SelectorTextbox'))" readonly/>
 
 <main role="main" class="pb-3">
 <form method="post" id="form">
     @Html.AntiForgeryToken()
 
-	
-        
+        @Html.DrawSelector(new Reload.Razor.Helpers.Selector.Parameters { Id="Sel1", ColumnNameId="UserId", ColumnNameText="UserName"})
+        @Html.DrawSelector(new Reload.Razor.Helpers.Selector.Parameters { Id="Sel2", ColumnNameId="UserId", ColumnNameText="UserName"})
+        @Html.DrawSelector(new Reload.Razor.Helpers.Selector.Parameters { Id="Sel3", ColumnNameId="UserId", ColumnNameText="UserName"})
+        @Html.DrawSelector(new Reload.Razor.Helpers.Selector.Parameters { Id="Sel4", ColumnNameId="UserId", ColumnNameText="UserName"})
     </form>
 </main>
 
 
-@{Html.RenderPartial("Footer");}
-
-----
+@{ await Html.RenderPartialAsync("Footer"); }
