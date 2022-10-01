@@ -3,15 +3,11 @@ using Reload.Razor;
 
 namespace SimplestRazor.Pages.Examples.Bootstrap
 {
-    public partial class Selector : Module
+    public partial class Tabs : Module
     {
-        public string DD1 = "";
-        public string DD2 = "";
-        public string DD3 = "";
-
-        public Selector()
+        public Tabs()
         {
-            Title = "Bootstrap - Selector";
+            Title = "Bootstrap - Tabs";
         }
 
         public override PartialViewResult OnGet()
@@ -20,9 +16,6 @@ namespace SimplestRazor.Pages.Examples.Bootstrap
         }
         public override PartialViewResult OnPost()
         {
-            DD1 = Page.Request.Form["DD1"];
-            DD2 = Page.Request.Form["DD2"];
-            DD3 = Page.Request.Form["DD3"];
             return View(this);
         }
     }

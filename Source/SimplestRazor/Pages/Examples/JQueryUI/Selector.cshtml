@@ -14,6 +14,14 @@
         @Html.DrawSelector(new Reload.Razor.Helpers.Selector.Parameters { Id="Sel2", ColumnNameId="UserId", ColumnNameText="UserName"})
         @Html.DrawSelector(new Reload.Razor.Helpers.Selector.Parameters { Id="Sel3", ColumnNameId="UserId", ColumnNameText="UserName"})
         @Html.DrawSelector(new Reload.Razor.Helpers.Selector.Parameters { Id="Sel4", ColumnNameId="UserId", ColumnNameText="UserName"})
+        @Html.DrawDropdown(new Reload.Razor.Helpers.Dropdown.Parameters { Id="DD1", ColumnNameId="UserId", ColumnNameText="UserName", SelectedValue=Module.DD1})
+        @Html.DrawDropdown(new Reload.Razor.Helpers.Dropdown.Parameters { Id="DD2", ColumnNameId="UserId", ColumnNameText="UserName", SelectedValue=Module.DD2, Size=4})
+        @Html.DrawDropdown(new Reload.Razor.Helpers.Dropdown.Parameters { Id="DD3", ColumnNameId="UserId", ColumnNameText="UserName", Multiple=true, Size=4})
+        <input type="submit" text="send" />
+
+        
+
+
     </form>
 </main>
 

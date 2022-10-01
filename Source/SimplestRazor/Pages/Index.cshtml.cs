@@ -40,6 +40,24 @@ namespace SimplestRazor.Pages
                     }
                     break;
 
+                case "tabs":
+                    {
+                        Module = CreateModule<Tabs>();
+                    }
+                    break;
+
+                case "editablegrid":
+                    {
+                        Module = CreateModule<EditableGrid>();
+                    }
+                    break;
+
+                case "editablegridjson":
+                    {
+                        Module = CreateModule<EditableGridJson>();
+                    }
+                    break;
+
                 case "selector":
                     {
                         Module = CreateModule<Selector>();
