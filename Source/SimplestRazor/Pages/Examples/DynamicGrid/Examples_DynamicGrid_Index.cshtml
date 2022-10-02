@@ -13,7 +13,7 @@
 @{Html.RenderPartialAsync("Header");}
 
 <main role="main" class="pb-3">
-<form method="post" id="form">
+<form method="post" name="form" id="form">
     @Html.AntiForgeryToken()    
     @Html.DrawGridPlaceHolder(GridParams);
 </form>

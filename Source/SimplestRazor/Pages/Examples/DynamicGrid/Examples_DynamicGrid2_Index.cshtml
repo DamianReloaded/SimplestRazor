@@ -1,0 +1,35 @@
+﻿@model SimplestRazor.Pages.Index
+@{
+    var Module = Model.GetModule<SimplestRazor.Pages.Examples.DynamicGrid.Examples_DynamicGrid2_Index>();
+
+
+}
+
+@{Html.RenderPartialAsync("Header");}
+
+<main role="main" class="pb-3">
+    <div style="width:100%;">
+        <div class="row">
+            <div class="col-sm" style="text-align:right">
+                Buscar: <input type="text" id="T1_SearchText" />
+            </div>
+        </div>
+    </div>
+        @{
+        var Params1 = new Reload.Razor.Helpers.GridFix.Parameters
+            {
+                Id = "T1",
+                TextboxSearchId = "T1_SearchText",
+                Height = "200px",
+                JsonURL = "/?r=Examples_DynamicGrid_Data_SelectAll",
+            };
+    }
+    @Html.DrawGridFix(Params1)
+    <form method="post" name="form" id="form">
+        @Html.AntiForgeryToken()
+    </form>
+</main>
+
+
+
+@{Html.RenderPartial("Footer");}

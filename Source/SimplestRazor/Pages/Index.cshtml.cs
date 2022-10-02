@@ -28,6 +28,12 @@ namespace SimplestRazor.Pages
                     }
                     break;
 
+                case "examples_dynamicgrid2_index":
+                    {
+                        Module = CreateModule<Examples_DynamicGrid2_Index>();
+                    }
+                    break;
+
                 case "examples_dynamicgrid_data_selectall":
                     {
                         Module = CreateModule<Examples_DynamicGrid_Data_SelectAll>();

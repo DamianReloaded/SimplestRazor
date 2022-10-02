@@ -13,6 +13,7 @@ remember that form controls need to have a "name" property
 <link rel="stylesheet" href="~/images/bootstrap-icons/bootstrap-icons.css"/>
 <link rel="stylesheet" href="~/fontawesome/css/all.min.css"/>
 <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css" />
+<link rel="stylesheet" href="~/css/Reload/gridfix.css" asp-append-version="true" />
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -23,14 +24,15 @@ remember that form controls need to have a "name" property
 <script src="~/js/DataTables/dataTables.bootstrap5.min.js"></script>
 <script src="~/js/Reload/selector.js"></script>
 <script src="~/js/Reload/dropdown.js"></script>
-
+<script src="~/js/Reload/gridfix.js"></script>
 
 @{ViewContext.Writer.Write(@"</head><body><main role=""main"" class=""pb-3"">");}
     Header
     
     @Html.Menu()
-    <a href="/?r=About">About</a> | 
-    <a href="/?r=Examples_DynamicGrid_Index">Example: Dynamic Grid</a> | 
+    <a href="/?r=About">About</a> |
+    <a href="/?r=Examples_DynamicGrid_Index">Dynamic Grid</a> |
+    <a href="/?r=Examples_DynamicGrid2_Index">Dynamic Grid 2</a> |
     <a href="/?r=Examples_DynamicGrid_Data_SelectAll">Dynamic Grid Data</a> |
     <a href="/?r=Accordion">Accordion</a> |
     <a href="/?r=Tabs">Tabs</a> |
