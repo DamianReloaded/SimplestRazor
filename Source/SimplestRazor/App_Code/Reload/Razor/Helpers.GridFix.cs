@@ -49,7 +49,7 @@ namespace Reload.Razor.Helpers
                                         });
                                     </script>
 
-                                    <div id=""" + p.Id + @"_Rectangle"" class=""gridfix-rectangle"" style=""width:""+p.Width+@"";"">&nbsp</div>
+                                    <div id=""" + p.Id + @"_Rectangle"" class=""gridfix-rectangle"" style=""width:" + p.Width + @";"">&nbsp</div>
                                     <div id=""" + p.Id + @"_Div1"" class=""gridfix gridfix-excel-mode"" data-name="""" data-id=""0"" style=""width:" + p.Width + @";"">
                                         <div id=""" + p.Id + @"_Div2"" class=""gridfix-table"" style=""height:" + p.Height + @";"">
                                             <table id=""" + p.Id + @"_Table"" style="""">

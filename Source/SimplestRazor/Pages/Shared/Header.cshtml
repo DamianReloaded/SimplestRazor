@@ -22,9 +22,13 @@ remember that form controls need to have a "name" property
 <script src="~/js/DataTables/jquery.dataTables.min.js"></script>
 <script src="~/js/FixedHeader/fixedHeader.bootstrap5.js"></script>
 <script src="~/js/DataTables/dataTables.bootstrap5.min.js"></script>
+
+<script type="module" src="~/js/split/split.js"></script>
+
 <script src="~/js/Reload/selector.js"></script>
 <script src="~/js/Reload/dropdown.js"></script>
 <script src="~/js/Reload/gridfix.js"></script>
+<script src="~/js/Reload/checkboxlist.js"></script>
 
 @{ViewContext.Writer.Write(@"</head><body><main role=""main"" class=""pb-3"">");}
     Header
@@ -39,5 +43,7 @@ remember that form controls need to have a "name" property
     <a href="/?r=DatePicker">DatePicker</a> |
     <a href="/?r=DropDown">DropDown</a> |
     <a href="/?r=Selector">Selector</a> |
+    <a href="/?r=Selector2">Selector2</a> |
+    <a href="/?r=Split">Split</a> |
     <a href="/?r=EditableGrid">EditableGrid</a>
 <hr />

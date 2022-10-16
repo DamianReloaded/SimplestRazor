@@ -15,4 +15,11 @@
     <Folder Include="Pages\Users\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\js\Reload\checkboxlist.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

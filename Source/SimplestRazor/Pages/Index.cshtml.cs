@@ -88,6 +88,12 @@ namespace SimplestRazor.Pages
                     }
                     break;
 
+                case "split":
+                    {
+                        Module = CreateModule<Split>();
+                    }
+                    break;
+
                 default:
                     {
                         Module = CreateModule<Error>();

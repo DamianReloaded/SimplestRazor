@@ -4,9 +4,9 @@ using Reload.Razor;
 
 namespace SimplestRazor.Pages.Examples.Bootstrap
 {
-    public partial class Selector2 : Module
+    public partial class Split : Module
     {
-        public Selector2()
+        public Split()
         {
             Title = "Bootstrap - Selector";
         }
@@ -17,7 +17,6 @@ namespace SimplestRazor.Pages.Examples.Bootstrap
         }
         public override PartialViewResult OnPost()
         {
-            var test = Page.Request.Form["check"];
             return View(this);
         }
     }
