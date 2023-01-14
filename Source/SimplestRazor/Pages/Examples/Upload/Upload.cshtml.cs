@@ -16,7 +16,7 @@ public partial class Upload : Module
     }
     public override PartialViewResult OnPost()
     {
-        /* For file upload to work, the form must have the attribute
+        /* For file upload to work, the form must have the attribute enctype="multipart/form-data"
          * the PageModel must have the attributes [DisableRequestSizeLimit] [RequestFormLimits(MultipartBodyLengthLimit = int.MaxValue)]
          */
         using (Stream stream = Page.Request.Form.Files[0].OpenReadStream())
@@ -34,7 +34,7 @@ public partial class Upload : Module
 
             if (totalRead != stream.Length)
             {
-                throw new Exception("Error subiendo archivo");
+                throw new Exception("Error receiving file");
             }
         }
 
