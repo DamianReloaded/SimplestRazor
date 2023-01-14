@@ -4,6 +4,7 @@ using Reload.Razor;
 using SimplestRazor.Pages.Examples.DynamicGrid;
 using SimplestRazor.Pages.Examples.DynamicGrid.Data;
 using SimplestRazor.Pages.Examples.Bootstrap;
+using SimplestRazor.Pages.Examples.Upload;
 
 namespace SimplestRazor.Pages
 {
@@ -91,6 +92,12 @@ namespace SimplestRazor.Pages
                 case "split":
                     {
                         Module = CreateModule<Split>();
+                    }
+                    break;
+
+                case "upload":
+                    {
+                        Module = CreateModule<Upload>();
                     }
                     break;
 

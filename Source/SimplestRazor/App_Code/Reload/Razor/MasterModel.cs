@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Reload.Razor
 {
+    [DisableRequestSizeLimit]
+    [RequestFormLimits(MultipartBodyLengthLimit = int.MaxValue)]
     public class MasterModel : PageModel
     {
         public string PagePath { get; set; } = "";

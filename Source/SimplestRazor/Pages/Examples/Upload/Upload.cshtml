@@ -1,0 +1,21 @@
+﻿@model SimplestRazor.Pages.Index
+@{
+    var Module = Model.GetModule<SimplestRazor.Pages.Examples.Upload.Upload>();
+}
+
+@{Html.RenderPartial("Header");}
+
+<main role="main" class="pb-3">
+    <form method="post" id="form" enctype="multipart/form-data"> <!-- enctype="multipart/form-data" is mandatory or request.form.files will be empty -->
+    @Html.AntiForgeryToken()
+
+        <label for="myUpload" class="col-sm-3 col-form-label">Files to upload:</label>
+        <div class="col-sm-8">
+            <input id="myUpload" name="myUpload" type="file" placeholder="Placeholder" data-toggle='tooltip' title="Tooltip" class="form-control" multiple />
+        </div>
+        <button type="submit">Submit</button>
+</form>
+</main>
+
+
+@{Html.RenderPartial("Footer");}

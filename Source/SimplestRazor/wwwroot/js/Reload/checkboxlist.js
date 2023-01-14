@@ -6,8 +6,10 @@ class CheckboxList {
         this.CtrlName = ctrlName;
         this.JsonURL = '/?r=Examples_DynamicGrid_Data_SelectAll';
         this.JsonData = '';
+        this.JsonParams = {};
         this.JsonCheckedData = '';
         this.JsonCheckedURL = '';
+        this.JsonCheckedParams = {};
         this.Data = null;
         this.DataChecked = null;
         this.DataFiltered = null;
@@ -221,26 +223,17 @@ class CheckboxList {
     getData() {
         let this_ = this;
         let token = $("input[name='__RequestVerificationToken']", form).val();
-        $.post(this.JsonURL,
-            {
-                __RequestVerificationToken: token,
-                param1: '',
-                param2: ''
-            },
-            function (data, status) { this_.dataCallback(data, status); }
-        );
+        let urlParams = { __RequestVerificationToken: token };
+        $.extend(urlParams, urlParams, this.JsonParams);
+        $.post(this.JsonURL, urlParams, function (data, status) { this_.dataCallback(data, status); });
     }
 
     getDataChecked() {
         let this_ = this;
         let token = $("input[name='__RequestVerificationToken']", form).val();
-        $.post(this.JsonCheckedURL,
-            {
-                __RequestVerificationToken: token,
-                param1: '',
-                param2: ''
-            },
-            function (data, status) { this_.dataCheckedCallback(data, status); }
+        let urlParams = { __RequestVerificationToken: token };
+        $.extend(urlParams, urlParams, this.JsonCheckedParams);
+        $.post(this.JsonCheckedURL, urlParams, function (data, status) { this_.dataCheckedCallback(data, status); }
         );
     }
 }

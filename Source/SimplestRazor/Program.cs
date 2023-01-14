@@ -32,6 +32,7 @@ razorPagesOptions.AddRazorOptions(o =>
     o.PageViewLocationFormats.Add("/Pages/Examples/DynamicGrid/{0}.cshtml");
     o.PageViewLocationFormats.Add("/Pages/Examples/Bootstrap/{0}.cshtml");
     o.PageViewLocationFormats.Add("/Pages/Examples/JQueryUI/{0}.cshtml");
+    o.PageViewLocationFormats.Add("/Pages/Examples/Upload/{0}.cshtml");
 });
 
 var app = builder.Build();

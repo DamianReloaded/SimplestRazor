@@ -55,8 +55,17 @@
         
         @Html.DrawCheckboxList(Params1)
 
-        <button type="submit">send</button>
     </form>
+
+        <script>
+            function myFunc() {
+               checkObj.JsonParams = {test1:1, test2:2};
+               checkObj.refresh();
+            }
+        </script>
+
+    <button type="submit" onclick="myFunc();">send</button>
+
 </main>
 
 @{Html.RenderPartial("Footer");}
